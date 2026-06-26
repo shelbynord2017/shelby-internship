@@ -12,6 +12,7 @@ import HotCollections from "./components/home/HotCollections";
 function App() {
 
   const [hotCollections, setHotCollections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
     async function fetchHotCollections() {
@@ -21,6 +22,7 @@ function App() {
       );
 
       setHotCollections(data || []);
+      setLoading(false);
       console.log(data);
     } catch (error) {
       console.error("Error fetching collections:", error);
@@ -44,7 +46,7 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/author" element={<Author />} />
         <Route path="/item-details" element={<ItemDetails />} />
-        <Route path="/hotCollections" element={<HotCollections hotCollections={hotCollections} />} />
+        <Route path="/hotCollections" element={<HotCollections loading={loading} hotCollections={hotCollections} />} />
       </Routes>
       <Footer />
     </Router>
