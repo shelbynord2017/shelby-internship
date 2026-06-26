@@ -23,7 +23,6 @@ function App() {
 
       setHotCollections(data || []);
       setLoading(false);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching collections:", error);
       setHotCollections([]);
@@ -41,7 +40,6 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-        console.log(hotCollections)
         <Route path="/" element={<Home hotCollections={hotCollections} />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/author" element={<Author />} />
