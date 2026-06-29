@@ -23,7 +23,6 @@ const Countdown = ({expiryDate}) => {
         const hours = Math.floor(totalSeconds / 3600);
         
     
-        // const hDisplay = String(hours).padStart(2, '0');
         const mDisplay = String(minutes).padStart(2, '0');
         const sDisplay = String(seconds).padStart(2, '0');
     

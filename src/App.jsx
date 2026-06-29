@@ -43,7 +43,6 @@ useEffect(()=> {
 
       setNewItems(data || []);
       setLoading(false);
-      console.log(data)
     } catch (error) {
       console.error("Error fetching new items:", error);
       setNewItems([]);
