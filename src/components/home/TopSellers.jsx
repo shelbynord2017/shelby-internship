@@ -17,25 +17,29 @@ const TopSellers = ({ loading, topSellers = [] }) => {
           </div>
           {loading ? (
             <>
-              {new Array(12).fill(0).map((_, i) => (
-                <div
-                  className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
-                  style={{ width: "100%", maxWidth: "100%", padding: "0" }}
-                  key={i}
-                >
-                  <div className="">
-                    <div className="lazy pp-author-skeleton">
-                      <Skeleton width="30px" height="30px" borderRadius="50%" />
-                      <i className="fa fa-check"></i>
-                    </div>
-                    <div className="author_list_info-skeleton">
-                      <Skeleton width="75px" height="10px" />
-                      <br />
-                      <Skeleton width="30px" height="10px" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <div
+                className="col-md-12"
+              >
+                <ol className="author_list">
+                  {new Array(12).fill(0).map((_, i) => (
+                    <li>
+                      <div className="" key={i}>
+                        <div className="author_list_pp">
+                          <div className="lazy pp-author">
+                            <Skeleton width="50px" height="50px" borderRadius="50%" />
+                          </div>
+                          <i className="fa fa-check"></i>
+                        </div>
+                        <div className="author_list_info">
+                          <Skeleton width="75px" height="15px" />
+                          <br />
+                          <Skeleton width="40px" height="15px" padding-bottom="10px" />
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </>
           ) : (
             <div className="col-md-12">
