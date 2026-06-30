@@ -10,11 +10,13 @@ import { useEffect, useState } from "react";
 import HotCollections from "./components/home/HotCollections";
 import NewItems from "./components/home/NewItems";
 import Countdown from "./components/Countdown";
+import TopSellers from "./components/home/TopSellers";
 
 function App() {
 
   const [hotCollections, setHotCollections] = useState([]);
   const [newItems, setNewItems] = useState([]);
+  const [topSellers, setTopSellers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
@@ -51,6 +53,21 @@ useEffect(()=> {
   fetchNewItems();
 }, []);
 
+useEffect(()=> {
+    async function fetchTopSellers() {
+    try {
+      const { data } = await axios.get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
+      );
+      setTopSellers(data || []);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching top sellers:", error);
+      setTopSellers([]);
+    }
+  };
+  fetchTopSellers();
+}, []);
 
 
 
@@ -61,12 +78,14 @@ useEffect(()=> {
         <Route path="/" element={<Home 
           hotCollections={hotCollections} 
           newItems={newItems}
+          topSellers={topSellers}
         />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/author" element={<Author />} />
         <Route path="/item-details" element={<ItemDetails />} />
         <Route path="/hotCollections" element={<HotCollections loading={loading} hotCollections={hotCollections} />} />
         <Route path="/newItems" element={<NewItems loading={loading} newItems={newItems} />} />
+        <Route path="/topSellers" element={<TopSellers loading={loading} topSellers={topSellers} />} />
       </Routes>
       <Footer />
     </Router>
