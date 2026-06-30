@@ -61,7 +61,6 @@ useEffect(()=> {
       );
       setTopSellers(data || []);
       setLoading(false);
-      console.log(data)
     } catch (error) {
       console.error("Error fetching top sellers:", error);
       setTopSellers([]);
