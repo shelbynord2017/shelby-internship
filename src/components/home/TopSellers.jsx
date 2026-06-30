@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 
 const TopSellers = () => {
+  // starting section
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
