@@ -9,7 +9,7 @@ import TopSellers from "../components/home/TopSellers";
 
 
 
-const Home = ({ hotCollections = [] }) => {
+const Home = ({ newItems, hotCollections = [] }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -23,7 +23,7 @@ const Home = ({ hotCollections = [] }) => {
         <Landing />
         <LandingIntro />
         <HotCollections hotCollections={hotCollections} />
-        <NewItems />
+        <NewItems newItems={newItems} />
         <TopSellers />
         <BrowseByCategory />
       </div>
