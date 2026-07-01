@@ -24,33 +24,27 @@ const NewItems = ({ loading, newItems = [] }) => {
           
           {loading ? (
           <>
-            {new Array(7).fill(0).map((_, i) => (
-            <div 
-            className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
-            style={{ width: "100%", maxWidth: "100%", padding: "0" }}
-            key={i}
-            >
-              <div className="nft_coll">
-                <div className="nft_wrap">
-                  <Skeleton width="100%" height="200px" />
-                </div>
-                <div className="nft_coll_pp">
-                  <Skeleton
-                    width="50px"
-                    height="50px"
-                    borderRadius="50%"
-                  />
+            {new Array(4).fill(0).map((_, i) => (
+            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={i}>
+              <div className="nft_item">
+                <div className="author_list_pp">
+                  <div className="lazy">
+                    <Skeleton 
+                      width="50px"
+                      height="50px"
+                      borderRadius="50%"
+                      color="gray"
+                    />
+                  </div>
                   <i className="fa fa-check"></i>
                 </div>
-                <div className="nft_coll_info">
-                  <Skeleton width="100px" height="20px" />
-                  <br />
-                  <Skeleton width="60px" height="20px" />
+                <div className="lazy nft__item_preview">
+                  <Skeleton width="200px" height="300px" borderRadius="10px" />
                 </div>
               </div>
             </div>
             ))}
-            </>
+          </>
             ) : newItems.length > 0 ? (
               <OwlCarousel
                 className="owl-theme"
